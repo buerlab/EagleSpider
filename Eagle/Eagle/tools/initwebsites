@@ -1,0 +1,16 @@
+from pymongo import MongoClient
+import uuid
+
+with open("websiteSource") as f:
+	source = f.readlines()
+
+mongo = MongoClient()
+db = mongo.searchweb
+
+for item in source:
+	print item
+	msgList = item.split(" ")
+	
+	db.webs.insert({'name':msgList[0].strip(),'url':msgList[1].strip()})
+
+mongo.close()

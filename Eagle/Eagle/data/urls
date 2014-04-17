@@ -1,0 +1,5 @@
+http://www.bjeea.cn/html/ckcz/tzgg/****//div[@id='boss']//li/a/text()**
+http://www.sxkszx.cn/news/crgk/index_2.html
+//a[@target='_blank']/text()
+http://www.jseea.cn/enrollment/enrollmentchannel_as_1.html
+//a[@title]/text()
