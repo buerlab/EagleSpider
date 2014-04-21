@@ -15,17 +15,18 @@ class BlackSpider(Spider):
 
     name = 'blackspider'
 
-    def __init__(self, category=None, *args, **kwargs):
-        super(BlackSpider, self).__init__(*args, **kwargs)
-        self.start_urls = []
+    def __init__(self, urls, priority):
+        super(BlackSpider, self).__init__()
+        self.start_urls = urls
         self.crawledurls = []
+        self.priority = priority
 
-        mongo = MongoClient()
-        db = mongo.siteDb
-        sites = db.siteCol.find()
-        for site in sites:
-            self.start_urls.append(site['siteurl'])
-        mongo.close()
+        # mongo = MongoClient()
+        # db = mongo.siteDb
+        # sites = db.siteCol.find().limit(count)
+        # for site in sites:
+        #     self.start_urls.append(site['siteurl'])
+        # mongo.close()
 
     
     # self.url_xpath_dic = utils.geturljson()
@@ -35,6 +36,7 @@ class BlackSpider(Spider):
 
     def parse(self, response):
         log.msg("parsing%s"%response.url, level=log.INFO)
+        log.msg("----priority:%s"%self.priority, level=log.INFO)
         sel = Selector(response)
         self.crawledurls.append(response.url)
 

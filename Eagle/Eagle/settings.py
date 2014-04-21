@@ -13,8 +13,8 @@ SPIDER_MODULES = ['Eagle.spiders']
 NEWSPIDER_MODULE = 'Eagle.spiders'
 
 ITEM_PIPELINES = {
-	'Eagle.pipelines.UrlFullFillPipeline':100,
-	'Eagle.pipelines.DuplicatedPipeline':200
+	# 'Eagle.pipelines.UrlFullFillPipeline':100,
+	# 'Eagle.pipelines.DuplicatedPipeline':200
 	# 'Eagle.pipelines.FilterPipeline':200,
 	# 'Eagle.pipelines.SaveItemPipeline':300
 }

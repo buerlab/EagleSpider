@@ -7,21 +7,18 @@ from pymongo import MongoClient
 class SpiderHandler(tornado.web.RequestHandler):
 	websCashe = {}
 
-	def post(self):
-		url = self.get_argument("url")
-		num = self.get_argument("num")
-		content = json.loads(self.get_argument("content"))
+	def get(self):
+		name = self.get_argument("sitename")
+		url = self.get_argument("siteurl")
+		num = self.get_argument("count")
 		if int(num) > 0:
-			print "from:%s get:%s new items\n"%(url, num)
-			for i in content:
-				print i
-
+			print "from:%s (%s) get:%s new items\n"%(name, url, num)
 		self.write("tornado get it!")
 		return
 
 
 application = tornado.web.Application([
-	(r"/spider", SpiderHandler),
+	(r"/message/new_message", SpiderHandler),
 ])
 
 if __name__ == "__main__":

@@ -47,9 +47,6 @@ class DuplicatedPipeline(object):
 
 		mongo = MongoClient()
 		sitename = mongo.siteDb.siteCol.find_one({"siteurl":siteurl})["sitename"]
-		print "sitename:",sitename
-		print "type:",type(sitename)
-		print "after:",type(sitename.encode("utf-8"))
 
 		db = mongo.spiderDb
 		find = db.snapshotCol.find_one({"siteurl":siteurl}, {"_id":0, "titles":1}) or {"titles":[]}
@@ -73,7 +70,7 @@ class DuplicatedPipeline(object):
 						break
 
 			# send a new items msg to server
-			conn = httplib.HTTPConnection("localhost:8890")
+			conn = httplib.HTTPConnection("localhost:8888")
 			try:
 				parms = urllib.urlencode({"sitename":sitename,"siteurl":siteurl,"count":len(newItems)})
 				conn.request("GET","/message/new_message?%s"%parms)

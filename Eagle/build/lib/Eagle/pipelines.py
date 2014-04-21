@@ -73,7 +73,7 @@ class DuplicatedPipeline(object):
 						break
 
 			# send a new items msg to server
-			conn = httplib.HTTPConnection("localhost:8890")
+			conn = httplib.HTTPConnection("localhost:8888")
 			try:
 				parms = urllib.urlencode({"sitename":sitename,"siteurl":siteurl,"count":len(newItems)})
 				conn.request("GET","/message/new_message?%s"%parms)
